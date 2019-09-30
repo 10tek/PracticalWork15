@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace PW15
@@ -7,9 +8,9 @@ namespace PW15
     {
         static void Main(string[] args)
         {
-            Assembly assemblyString = typeof(String).Assembly;
+            Assembly assembly = typeof(String).Assembly;
             string text = "Eazy HW, sir";
-            foreach (var type in assemblyString.GetTypes())
+            foreach (var type in assembly.GetTypes())
             {
                 if (type.Name == "String")
                 {
@@ -21,6 +22,15 @@ namespace PW15
                             Console.WriteLine(result);
                         }
                     }
+                }
+            }
+
+            assembly = typeof(List<string>).Assembly;
+            foreach (var type in assembly.GetTypes())
+            {
+                foreach (var constructor in type.GetConstructors())
+                {
+                    Console.WriteLine(constructor);
                 }
             }
 
